@@ -26,6 +26,8 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
 import javax.swing.tree.DefaultTreeCellRenderer;
 
 public class SoundView extends JFrame {
@@ -60,8 +62,13 @@ public class SoundView extends JFrame {
         JPanel controlPanel = new JPanel(new GridBagLayout());
         controlPanel.setBorder(
                 BorderFactory.createCompoundBorder(
-                        BorderFactory.createLoweredSoftBevelBorder(),
-                        BorderFactory.createTitledBorder("Paso a Paso de Configuración.")
+                        BorderFactory.createEtchedBorder(EtchedBorder.RAISED),
+                        BorderFactory.createTitledBorder(
+                                BorderFactory.createLoweredSoftBevelBorder(),
+                                "Paso a Paso de Configuración.",
+                                 TitledBorder.TRAILING,
+                                TitledBorder.BELOW_TOP
+                        )
                 )
         );
 

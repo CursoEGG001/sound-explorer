@@ -43,7 +43,7 @@ public final class SoundModel {
     }
 
     public void updateLinesForMixer(Mixer.Info mixerInfo) {
-        this.selectedMixerInfo = mixerInfo; // Store the selected mixer
+        this.selectedMixerInfo = mixerInfo; // Guarda el mezclador elegido
         availableLines = new ArrayList<>();
         Mixer mixer = AudioSystem.getMixer(mixerInfo);
         Line.Info[] sourceLines = mixer.getSourceLineInfo();
@@ -66,7 +66,7 @@ public final class SoundModel {
                 boolean bigEndian = format.isBigEndian();
 
                 // Ajustar sampleRate y frameRate si son <=0
-                float adjustedSampleRate = sampleRate > 0 ? sampleRate : 48000.0f;
+                float adjustedSampleRate = sampleRate > 0 ? sampleRate : 44100.0f;
                 float adjustedFrameRate = adjustedSampleRate;
 
                 // Calcular frameSize desde sampleSize y channels
@@ -100,13 +100,13 @@ public final class SoundModel {
 
     public void initializeAudioLine() throws LineUnavailableException {
         if (selectedFormat != null && selectedMixerInfo != null) {
-            // Get the mixer from the selected mixer info
+            // Obtiene el mezclador del selectedMixerInfo
             Mixer mixer = AudioSystem.getMixer(selectedMixerInfo);
             DataLine.Info info = new DataLine.Info(SourceDataLine.class, selectedFormat);
             
-            // Check if the selected mixer supports this line
+            // Chequea que el mezclador soporte la línea elegida.
             if (mixer.isLineSupported(info)) {
-                // Get the line from the selected mixer rather than using AudioSystem.getLine
+                // Consigue la linea del mezclador elegido en lugar de usar AudioSystem.getLine
                 audioLine = (SourceDataLine) mixer.getLine(info);
                 audioLine.open(selectedFormat);
             } else {
