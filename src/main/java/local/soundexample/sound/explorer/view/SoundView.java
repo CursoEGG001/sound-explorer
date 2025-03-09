@@ -8,7 +8,6 @@ package local.soundexample.sound.explorer.view;
  *
  * @author pc
  */
-// imports ommited for brevety.
 import javax.swing.*;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.TreeSelectionListener;
